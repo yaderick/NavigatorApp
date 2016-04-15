@@ -18,13 +18,16 @@ var {
 
 var SplashPage = require('./SplashPage');
 var LoginPage = require('./LoginPage');
+var MainPage = require('./MainPage');
+var PersonPage = require('./PersonPage');
+var NoNavigationPage = require('./NoNavigationPage');
 
-class App extends Component {
+class App extends Component {  
   render() {
       return (
       <Navigator
           initialRoute={{id: 'SplashPage', name: 'Index'}}
-          renderScene={this.renderScene.bind(this)}
+          renderScene={this.renderScene.bind(this)}                    
           configureScene={(route) => {
             if (route.sceneConfig) {
               return route.sceneConfig;
@@ -45,11 +48,21 @@ class App extends Component {
         <LoginPage navigator={navigator} />
       );
     }
-    /*if (routeId === 'LoginPage') {
+    if (routeId === 'MainPage') {
       return (
-          <LoginPage navigator={navigator} />          
-        );
-    }*/
+        <MainPage navigator={navigator} />
+      );
+    }
+    if (routeId === 'PersonPage') {
+      return (
+        <PersonPage navigator={navigator} />
+      );
+    }    
+    if (routeId === 'NoNavigationPage') {
+      return (
+        <NoNavigationPage navigator={navigator} />
+      );
+    }    
     return this.noRoute(navigator);
   }
   noRoute(navigator) {
@@ -62,6 +75,32 @@ class App extends Component {
       );
   }
 }
+
+/*var NavigationBarRouteMapper = {
+  LeftButton(route, navigator, index, navState) {   
+    return (
+      <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
+        <Text style={{color: 'white', margin:10, fontSize: 16}}>Back</Text>
+      </TouchableOpacity>
+    );
+  },
+  RightButton(route, navigator, index, navState) {
+    return (
+      <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
+        <Text style={{color: 'white', margin:10, fontSize: 16}}>Next</Text>
+      </TouchableOpacity>
+    );
+  },
+  Title (route, navigator, index, navState) {
+    return (
+      <View style={{width: 100, textAlign: 'center', flex:1, justifyContent: 'center'}}>
+        <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
+          <Text style={{color: 'white', margin:10, fontSize: 16}}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}*/
 
 const styles = StyleSheet.create({
   container: {

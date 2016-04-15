@@ -27,7 +27,7 @@ class LoginPage extends Component {
 			<View style={{flex:1, alignItems: 'center', justifyContent:'center'}}>				
 				<TouchableHighlight
 				  onPress={this.gotoNext.bind(this)}>
-				  <Text style={{color:'red'}}>Log In</Text>
+				  <Text style={{color:'red'}}>Press Me</Text>
 				</TouchableHighlight>
 			</View>
 		);
@@ -52,6 +52,7 @@ var NavigationBarRouteMapper = {
 		return (
 			<TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
 				<Text style={{color: 'white', margin:10, fontSize: 16}}>Next</Text>
+				
 			</TouchableOpacity>
 		);
 	},
@@ -59,7 +60,7 @@ var NavigationBarRouteMapper = {
 		return (
 			<View style={{width: 100, textAlign: 'center', flex:1, justifyContent: 'center'}}>
 				<TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-					<Text style={{color: 'white', margin:10, fontSize: 16}}>Login</Text>
+					<Text style={{color: 'white', margin:10, fontSize: 16}}>Login Page</Text>
 				</TouchableOpacity>
 			</View>
 		);
