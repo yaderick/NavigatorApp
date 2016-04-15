@@ -16,11 +16,13 @@ var {
   TouchableOpacity,
 } = React;
 
+//pages
 var SplashPage = require('./SplashPage');
 var LoginPage = require('./LoginPage');
 var MainPage = require('./MainPage');
 var PersonPage = require('./PersonPage');
 var NoNavigationPage = require('./NoNavigationPage');
+
 
 class App extends Component {  
   render() {
@@ -75,32 +77,6 @@ class App extends Component {
       );
   }
 }
-
-/*var NavigationBarRouteMapper = {
-  LeftButton(route, navigator, index, navState) {   
-    return (
-      <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-        <Text style={{color: 'white', margin:10, fontSize: 16}}>Back</Text>
-      </TouchableOpacity>
-    );
-  },
-  RightButton(route, navigator, index, navState) {
-    return (
-      <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-        <Text style={{color: 'white', margin:10, fontSize: 16}}>Next</Text>
-      </TouchableOpacity>
-    );
-  },
-  Title (route, navigator, index, navState) {
-    return (
-      <View style={{width: 100, textAlign: 'center', flex:1, justifyContent: 'center'}}>
-        <TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-          <Text style={{color: 'white', margin:10, fontSize: 16}}>Login</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}*/
 
 const styles = StyleSheet.create({
   container: {

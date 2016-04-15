@@ -2,7 +2,9 @@
 
 import React, {  
   Component,  
+  StyleSheet,
   Text,
+  Image,
   View,  
 } from 'react-native';
 
@@ -17,12 +19,40 @@ class SplashPage extends Component {
   }
 	render() {
 		return (
-			<View style={{flex: 1, backgroundColor: '#246dd5', alignItems: 'center', justifyContent: 'center'}}>
-				<Text style={{color: '#fff', fontSize: 32,}}>Hello World!</Text>
-			</View>
+        <View style={styles.container}>
+          <Image  resizeMode='contain' source={require('./img/bg.png')} >
+            <View style={styles.imageOverlay}>        
+              <Text style={{color: '#fff', fontSize: 32,}}> Welcome Mate </Text>
+            </View>
+          </Image>			
+        </View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center'    
+  },
+  imageOverlay: {
+    flex: 1,
+    position:'absolute',
+    //zIndex:1,
+    backgroundColor:'rgba(0,0,0,0.2)',
+    alignItems: 'stretch',
+    justifyContent: 'center'    
+  },
+  canvas: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,    
+  }
+});
 
 module.exports = SplashPage;
 
