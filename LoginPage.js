@@ -1,6 +1,10 @@
 'use strict';
 
 var React = require('react-native');
+var Animatable = require('react-native-animatable');
+var FaIcon = require('react-native-vector-icons/FontAwesome');
+var MIcon = require('react-native-vector-icons/MaterialIcons');
+
 var {
 	StyleSheet,
 	Component,
@@ -18,24 +22,22 @@ class LoginPage extends Component {
 			<Navigator 
 				renderScene={this.renderScene.bind(this)}
 				navigationBar= {
-					<Navigator.NavigationBar  style={{backgroundColor: '#246dd5', alignItems: 'center'}} 
+					<Navigator.NavigationBar  style={{backgroundColor: '#303F9F', alignItems: 'center'}} 
 						routeMapper={NavigationBarRouteMapper} />
 			} />
 		);
 	}
 	renderScene (route, navigator) {
-		return (
-			<View style={styles.container}>
-	          <Image  resizeMode='contain' source={require('./img/bg.png')} >
-	            <View style={styles.imageOverlay}>   
-	            	<TouchableOpacity onPress={this.gotoNext.bind(this)}>
-						<Text>Press Me</Text>
-					</TouchableOpacity>     
-	              	<Text style={{color: '#fff', fontSize: 32,}}> Welcome Mate </Text>
+		return (				          
+	            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>   
+	            	<Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ textAlign: 'center' }}>❤️</Animatable.Text>
+	            	<TouchableOpacity onPress={this.gotoNext.bind(this)}>						
+						<FaIcon.Button name="facebook" backgroundColor="#3b5998">
+    						Login with Facebook
+  						</FaIcon.Button>
+					</TouchableOpacity>	              	
 	            </View>
-	          </Image>			
-        	</View>			
-		);
+			);
 	}
 	gotoNext() {
 		this.props.navigator.push({
@@ -46,18 +48,12 @@ class LoginPage extends Component {
 }
 
 var NavigationBarRouteMapper = {
-	LeftButton(route, navigator, index, navState) {		
-		/*return (
-			<TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-				<Text style={{color: 'white', margin:10, fontSize: 16}}>Back</Text>
-			</TouchableOpacity>
-		);*/
-	},
-	RightButton(route, navigator, index, navState) {
+	LeftButton(route, navigator, index, navState) {},
+	RightButton(route, navigator, index, navState) { 
 		return (
-			<TouchableOpacity style={{flex:1, justifyContent: 'center'}}>
-				<Text style={{color: 'white', margin:10, fontSize: 16}}>Skip</Text>				
-			</TouchableOpacity>
+			<TouchableHighlight style={{flex:1, justifyContent: 'center'}}>				
+				<MIcon name="chevron-right" size={30} color="#fff" /> 						
+			</TouchableHighlight>
 		);
 	},
 	Title (route, navigator, index, navState) {
@@ -71,27 +67,11 @@ var NavigationBarRouteMapper = {
 	}
 }
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    flex:1,
-    justifyContent: 'center',
-    alignItems: 'center'    
-  },
+const styles = StyleSheet.create({  
   imageOverlay: {
-    flex: 1,
-    position:'absolute',
-    //zIndex:1,
-    backgroundColor:'rgba(0,0,0,0.2)',
-    alignItems: 'stretch',
+    flex: 1,        
+    alignItems: 'center',
     justifyContent: 'center'    
-  },
-  canvas: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,    
   }
 });
 

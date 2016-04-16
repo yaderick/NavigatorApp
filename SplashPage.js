@@ -7,6 +7,8 @@ import React, {
   Image,
   View,  
 } from 'react-native';
+var Animatable = require('react-native-animatable');
+var EIcon = require('react-native-vector-icons/EvilIcons');
 
 class SplashPage extends Component {
 	  componentWillMount() {
@@ -15,43 +17,39 @@ class SplashPage extends Component {
       navigator.replace({
         id: 'LoginPage',
       });
-    }, 1000);
+    }, 10000);
   }
 	render() {
 		return (
-        <View style={styles.container}>
-          <Image  resizeMode='contain' source={require('./img/bg.png')} >
-            <View style={styles.imageOverlay}>        
-              <Text style={{color: '#fff', fontSize: 32,}}> Welcome Mate </Text>
-            </View>
-          </Image>			
-        </View>
+           <Image style={styles.bgContainer}  resizeMode='cover' source={require('./img/bg.png')} >
+              <Animatable.View animation="zoomInUp" style={styles.imageOverlay} >
+                <EIcon name="camera" size={150} color="#fff" style={{marginBottom: 25}} />
+                <Text style={{color: '#fff', fontSize: 32,}}>Avestagram</Text>                                
+              </Animatable.View>
+          </Image>      
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
+   bgContainer: {    
     flex:1,
     justifyContent: 'center',
-    alignItems: 'center'    
+    alignItems: 'center',
+    width: null,
+    height: null    
   },
   imageOverlay: {
-    flex: 1,
-    position:'absolute',
-    //zIndex:1,
-    backgroundColor:'rgba(0,0,0,0.2)',
-    alignItems: 'stretch',
-    justifyContent: 'center'    
-  },
-  canvas: {
+    flex: 1,          
+    backgroundColor:'rgba(0,0,0,0.4)',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
-    top: 0,
     left: 0,
-    bottom: 0,
-    right: 0,    
-  }
+    right: 0,
+    top: 0,
+    bottom: 0
+  }  
 });
 
 module.exports = SplashPage;
